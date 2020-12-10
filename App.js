@@ -10,8 +10,6 @@ export default function App() {
   return (
     <Provider store={AppStore}>
       <View style={styles.container}>
-        <Text>App...</Text>
-
         <Contador> </Contador>
         <TodoList></TodoList>
       </View>

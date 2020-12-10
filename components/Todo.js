@@ -13,6 +13,12 @@ const styles = {
     marginTop: 15,
     paddingHorizontal: "8%",
   },
+  completed: {
+    color: "green",
+  },
+  incompleted: {
+    color: "red",
+  },
 };
 
 export default function T({ text, id, completed }) {
@@ -30,7 +36,11 @@ export default function T({ text, id, completed }) {
         </TouchableHighlight>
       </View>
       <View style={{ flex: 1, paddingHorizontal: "8%" }}>
-        {completed ? <Text style>Completada</Text> : <Text>Incompleta</Text>}
+        {completed ? (
+          <Text style={styles.completed}>Completada</Text>
+        ) : (
+          <Text style={styles.incompleted}>Incompleta</Text>
+        )}
       </View>
     </View>
   );

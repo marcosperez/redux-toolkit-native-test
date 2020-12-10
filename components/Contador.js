@@ -12,12 +12,12 @@ export default function Contador() {
   return (
     <View style={styles.container}>
       <View>
-        <Text>Contador</Text>
+        <Text>Contador de todos:</Text>
       </View>
       <View>
         <Text>{counter}</Text>
       </View>
-      <View style={{ flexDirection: "row", width: "80%", marginTop: 15 }}>
+      {/* <View style={{ flexDirection: "row", width: "80%", marginTop: 15 }}>
         <View style={{ flex: 0.5 }}>
           <Button
             title="-"
@@ -33,7 +33,7 @@ export default function Contador() {
             onPress={() => dispatch(inscrement())}
           ></Button>
         </View>
-      </View>
+      </View> */}
     </View>
   );
 }

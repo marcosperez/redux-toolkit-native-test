@@ -51,7 +51,7 @@ export default function TodoList() {
         renderItem={({ item }) => (
           <Todo text={item.text} id={item.id} completed={item.completed} />
         )}
-        keyExtractor={(item) => item.id}
+        keyExtractor={(item) => item.id.toString()}
         style={{ width: "100%" }}
       ></FlatList>
     </View>
@@ -60,7 +60,7 @@ export default function TodoList() {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 3,
+    flex: 5,
     backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "center",
