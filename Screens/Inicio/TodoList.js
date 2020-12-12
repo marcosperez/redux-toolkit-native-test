@@ -9,9 +9,10 @@ import {
 } from "react-native";
 import { useSelector, useDispatch } from "react-redux";
 import styled from "styled-components/native";
-import { inscrement } from "../slices/contador";
-import { addTodo } from "../slices/todoss";
+import { inscrement } from "../../stores/slices/contador";
+import { addTodo } from "../../stores/slices/todoss";
 import Todo from "./Todo";
+import { createSelector } from "@reduxjs/toolkit";
 
 const ButtonText = styled.Text`
   font-size: 15px;
@@ -19,12 +20,12 @@ const ButtonText = styled.Text`
 `;
 
 export default function TodoList() {
-  const todos = useSelector((state) => state.todoss);
+  const todos = useSelector((state) => state.todoss, []);
   const [value, setValue] = useState("");
   const dispatch = useDispatch();
 
   const add = () => {
-    dispatch(addTodo({ id: todos.length, text: value }));
+    dispatch(addTodo({ text: value }));
     dispatch(inscrement());
     setValue("");
   };
@@ -49,7 +50,7 @@ export default function TodoList() {
       <FlatList
         data={todos}
         renderItem={({ item }) => (
-          <Todo text={item.text} id={item.id} completed={item.completed} />
+          <Todo text={item.text} id={item.id} state={item.state} />
         )}
         keyExtractor={(item) => item.id.toString()}
         style={{ width: "100%" }}

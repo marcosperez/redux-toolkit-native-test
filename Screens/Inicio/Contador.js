@@ -2,8 +2,6 @@ import { StatusBar } from "expo-status-bar";
 import React, { useState } from "react";
 import { Button, StyleSheet, Text, View } from "react-native";
 import { useSelector, useDispatch } from "react-redux";
-import { decrement, inscrement } from "../slices/contador";
-import { Increment, Decrement } from "../stores/actions";
 
 export default function Contador() {
   // const [count, setCount] = useState(0);
