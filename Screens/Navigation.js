@@ -2,7 +2,7 @@ import * as React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import InicioScreen from "./Inicio";
-import EstadisticasScreen from "./Estadisticas";
+import ArbolScreen from "./Arbol";
 import Ionicons from "react-native-vector-icons/Ionicons";
 
 const Tab = createBottomTabNavigator();
@@ -11,6 +11,7 @@ export default function NavigatorApp() {
   return (
     <NavigationContainer>
       <Tab.Navigator
+        initialRouteName="Estadisticas"
         screenOptions={({ route }) => ({
           tabBarIcon: ({ focused, color, size }) => {
             let iconName;
@@ -36,7 +37,7 @@ export default function NavigatorApp() {
         }}
       >
         <Tab.Screen name="Inicio" component={InicioScreen} />
-        <Tab.Screen name="Estadisticas" component={EstadisticasScreen} />
+        <Tab.Screen name="Estadisticas" component={ArbolScreen} />
       </Tab.Navigator>
     </NavigationContainer>
   );

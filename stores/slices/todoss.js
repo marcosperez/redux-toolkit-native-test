@@ -1,17 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { Estados } from "../../constants";
-let nextTodoId = 6;
+import { Estados, TODOS_EXAMPLES } from "../../constants";
+let nextTodoId = TODOS_EXAMPLES.length;
 
 const todosSlice = createSlice({
   name: "todoss",
-  initialState: [
-    { id: 0, text: "sadas", state: "todo" },
-    { id: 1, text: "dasdas", state: "doing" },
-    { id: 2, text: "adas", state: "todo" },
-    { id: 3, text: "sfsdfsd", state: "closed" },
-    { id: 4, text: "sdfsdfsd", state: "doing" },
-    { id: 5, text: "asdas", state: "todo" },
-  ],
+  initialState: TODOS_EXAMPLES,
   reducers: {
     addTodo: {
       reducer(state, action) {

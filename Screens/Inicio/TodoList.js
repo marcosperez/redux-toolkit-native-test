@@ -13,6 +13,7 @@ import { inscrement } from "../../stores/slices/contador";
 import { addTodo } from "../../stores/slices/todoss";
 import Todo from "./Todo";
 import { createSelector } from "@reduxjs/toolkit";
+import { Estados } from "../../constants";
 
 const ButtonText = styled.Text`
   font-size: 15px;
@@ -20,7 +21,7 @@ const ButtonText = styled.Text`
 `;
 
 export default function TodoList() {
-  const todos = useSelector((state) => state.todoss, []);
+  //
   const [value, setValue] = useState("");
   const dispatch = useDispatch();
 
@@ -29,6 +30,28 @@ export default function TodoList() {
     dispatch(inscrement());
     setValue("");
   };
+  const selectTodos = (state) => state.todoss;
+  const selectFilter = (state) => state.filtro;
+  const todosFiltrados = createSelector(
+    [selectTodos, selectFilter],
+    (todos, filter) => {
+      switch (filter.filtro) {
+        case Estados.ALL:
+          return todos;
+          break;
+        case Estados.TODO:
+          return todos.filter((t) => t.state === Estados.TODO);
+          break;
+        case Estados.DOING:
+          return todos.filter((t) => t.state === Estados.DOING);
+          break;
+        case Estados.CLOSED:
+          return todos.filter((t) => t.state === Estados.CLOSED);
+          break;
+      }
+    }
+  );
+  const todos = useSelector(todosFiltrados);
 
   return (
     <View style={styles.container}>

@@ -1,8 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { TODOS_EXAMPLES } from "../../constants";
 
 const counterSlice = createSlice({
   name: "counter",
-  initialState: 6,
+  initialState: TODOS_EXAMPLES.length,
   reducers: {
     inscrement(state, action) {
       return state + 1;

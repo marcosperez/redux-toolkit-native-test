@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { toggleTodo } from "../../stores/slices/todoss";
 import { Estados } from "../../constants";
 import styled from "styled-components/native";
+import { setFilter } from "../../stores/slices/filtro";
 
 const Container = styled.View`
   height: 30;
@@ -30,12 +31,34 @@ const Boton = styled.TouchableOpacity`
 `;
 
 export default function Filtro({}) {
+  const dispatch = useDispatch();
+
   return (
     <Container>
-      <Boton color="#000000">Todos</Boton>
-      <Boton color="#81dd0f">En Progreso</Boton>
-      <Boton color="#1115fa">Completado</Boton>
-      <Boton color="#cc192a">Cerrados</Boton>
+      <Boton
+        color="#000000"
+        onPress={() => dispatch(setFilter({ filtro: Estados.ALL }))}
+      >
+        Todos
+      </Boton>
+      <Boton
+        color="#81dd0f"
+        onPress={() => dispatch(setFilter({ filtro: Estados.TODO }))}
+      >
+        Pendiente
+      </Boton>
+      <Boton
+        color="#1115fa"
+        onPress={() => dispatch(setFilter({ filtro: Estados.DOING }))}
+      >
+        En Progreso
+      </Boton>
+      <Boton
+        color="#cc192a"
+        onPress={() => dispatch(setFilter({ filtro: Estados.CLOSED }))}
+      >
+        Cerrados
+      </Boton>
     </Container>
   );
 }
